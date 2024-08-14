@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "357904254398",
+    "project_id": "vipfans-1abd8",
+    "storage_bucket": "vipfans-1abd8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357904254398:android:64f1ba2b56d3bfcc1365ef",
+        "android_client_info": {
+          "package_name": "com.example.vipfans"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHVFr2YrSoY8gxo9KY_YHQJ0oyu0ukYgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
