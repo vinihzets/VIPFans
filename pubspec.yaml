@@ -48,6 +48,7 @@ dependencies:
   cpf_cnpj_validator: ^2.0.0
   flutter_localizations:
     sdk: flutter
+  cloud_firestore: ^5.2.1
 
 dev_dependencies:
   flutter_test:

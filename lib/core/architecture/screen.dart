@@ -15,12 +15,8 @@ abstract class ComposedScreen<T> {
 
 class Screen<T> extends ComposedScreen<T> {
   Screen({
-    required String name,
-    required Widget Function(BuildContext) page,
-    DependencyInjector? injector,
-  }) : super(
-          name: name,
-          page: page,
-          injector: injector,
-        );
+    required super.name,
+    required super.page,
+    super.injector,
+  });
 }
