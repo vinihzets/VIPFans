@@ -6,9 +6,9 @@ class FirebaseServiceImpl implements FirebaseService {
   Future<FirebaseApp> initialize() async {
     return await Firebase.initializeApp(
         options: const FirebaseOptions(
-            apiKey: 'AIzaSyBrOk6y2i8oaWyE7Yqn7K1FMJUxDv2nuJ8',
-            appId: '1:813231632899:web:e09aa21b6c8a8e21ebd436',
-            messagingSenderId: '813231632899',
-            projectId: 'smart-legacy-578c7'));
+            apiKey: 'AIzaSyBHVFr2YrSoY8gxo9KY_YHQJ0oyu0ukYgc',
+            appId: '1:357904254398:android:64f1ba2b56d3bfcc1365ef',
+            messagingSenderId: '357904254398',
+            projectId: 'vipfans-1abd8'));
   }
 }

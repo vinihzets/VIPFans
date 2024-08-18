@@ -5,8 +5,6 @@ mixin HudMixins {
     BuildContext context,
   ) {}
 
-  static showFailure(BuildContext context) {}
-
   Future showCustomDialog(BuildContext context,
       {Widget? content, Widget? title, List<Widget>? actions}) async {
     return await showDialog(
@@ -16,37 +14,6 @@ mixin HudMixins {
               title: title,
               actions: actions,
             ));
-  }
-
-  Future betterResponseDialog(String dialogText, String title, String? subTitle,
-      IconData? icon, Color? iconColor, BuildContext context) async {
-    return await showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Center(child: Text(title)),
-            content: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(icon, color: iconColor, size: 96.0),
-                subTitle != null
-                    ? Text.rich(TextSpan(
-                        text: "$subTitle\n",
-                        style: const TextStyle(
-                            fontSize: 24.0, fontWeight: FontWeight.bold)))
-                    : const SizedBox(),
-                Text(dialogText),
-              ],
-            ),
-            actions: [
-              Builder(
-                  builder: (context) => ElevatedButton(
-                      onPressed: () => Navigator.pop(context, "Fechar"),
-                      child: const Text("Fechar"))),
-            ],
-          );
-        });
   }
 
   Future<bool?> showConfirmationDialog(
@@ -101,13 +68,13 @@ mixin HudMixins {
     return response;
   }
 
-  showErrorDialog(BuildContext context,
+  showFailure(BuildContext context,
       {String? title, IconData? icon, String? content}) async {
     return await showDialog(
       context: context,
       builder: (context) => AlertDialog(
         // ignore: prefer_if_null_operators
-        title: Center(child: Text(title != null ? title : 'Alerta')),
+        title: Center(child: Text(title != null ? title : 'Aviso')),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -116,7 +83,7 @@ mixin HudMixins {
               icon ?? Icons.warning,
               color: Colors.red,
             ),
-            Text(content ?? 'Não foi possivel modificar o registro')
+            Text(content ?? 'Oops! algo aconteceu, tente novamente!')
           ],
         ),
         actions: [

@@ -49,7 +49,7 @@ class NavigatorServiceImpl implements NavigatorService {
     currentRoute = route;
 
     return NavigatorService.key.currentState
-        ?.pushNamed(route, arguments: arguments);
+        ?.pushNamed('/$route', arguments: arguments);
   }
 
   createNoTransitionPage(Widget page, String route, Object? arguments) {

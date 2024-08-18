@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:only_fans/core/architecture/navigator.dart';
 import 'package:only_fans/core/architecture/screen.dart';
 import 'package:only_fans/core/architecture/screens.dart';
-import 'package:only_fans/core/inject/container_injector.dart';
+import 'package:only_fans/core/core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:only_fans/core/services/auth_service.dart';
+import 'package:only_fans/core/services/database_service.dart';
+import 'package:only_fans/features/login/presentation/ui/login_view.dart';
 
 class VipFansApp extends StatefulWidget {
   const VipFansApp({super.key});
@@ -15,6 +18,11 @@ class VipFansApp extends StatefulWidget {
 class _VipFansAppState extends State<VipFansApp> {
   @override
   void initState() {
+    ServicesInjector().dependencies();
+
+    ContainerInjectorImpl().find<AuthService>().initialize();
+    ContainerInjectorImpl().find<DatabaseService>().initialize();
+
     for (Screen screen in screens) {
       screen.injector?.dependencies();
     }
@@ -23,9 +31,6 @@ class _VipFansAppState extends State<VipFansApp> {
   }
 
   Future<bool> onInit() async {
-    ContainerInjectorImpl()
-        .injectLazySingleton<NavigatorService>(() => NavigatorServiceImpl());
-
     return true;
   }
 
@@ -45,6 +50,9 @@ class _VipFansAppState extends State<VipFansApp> {
         }
 
         return MaterialApp(
+          theme: ThemeData.light(useMaterial3: true),
+          darkTheme: ThemeData.dark(useMaterial3: true),
+          themeMode: ThemeMode.system,
           onUnknownRoute: onUnknowRoute,
           onGenerateRoute: onGenerateRoute,
           navigatorKey: NavigatorService.key,
@@ -62,7 +70,7 @@ class _VipFansAppState extends State<VipFansApp> {
   }
 
   Route<dynamic>? onUnknowRoute(RouteSettings settings) {
-    return MaterialPageRoute(builder: (context) => Container());
+    return MaterialPageRoute(builder: (context) => const LoginView());
   }
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
