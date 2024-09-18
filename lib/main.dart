@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:only_fans/app.dart';
-import 'package:only_fans/core/services/impl/firebase_service_impl.dart';
+import 'package:morphling/morphling.dart';
+import 'package:vip_fans_instance_core/vip_fans_instance_core.dart';
+import 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

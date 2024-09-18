@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:only_fans/core/architecture/navigator.dart';
-import 'package:only_fans/core/architecture/screen.dart';
-import 'package:only_fans/core/architecture/screens.dart';
-import 'package:only_fans/core/core.dart';
+import 'package:morphling/morphling.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:only_fans/core/services/auth_service.dart';
-import 'package:only_fans/core/services/database_service.dart';
-import 'package:only_fans/features/login/presentation/ui/login_view.dart';
+import 'package:vip_fans/screens.dart';
+import 'package:vip_fans_instance_core/vip_fans_instance_core.dart';
+
+import 'core/theme/custom_theme_data.dart';
 
 class VipFansApp extends StatefulWidget {
   const VipFansApp({super.key});
@@ -50,12 +47,13 @@ class _VipFansAppState extends State<VipFansApp> {
         }
 
         return MaterialApp(
-          theme: ThemeData.light(useMaterial3: true),
+          theme: CustomThemeData.lightTheme,
           darkTheme: ThemeData.dark(useMaterial3: true),
           themeMode: ThemeMode.system,
           onUnknownRoute: onUnknowRoute,
           onGenerateRoute: onGenerateRoute,
           navigatorKey: NavigatorService.key,
+          initialRoute: '/login',
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
@@ -70,7 +68,7 @@ class _VipFansAppState extends State<VipFansApp> {
   }
 
   Route<dynamic>? onUnknowRoute(RouteSettings settings) {
-    return MaterialPageRoute(builder: (context) => const LoginView());
+    return null;
   }
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {

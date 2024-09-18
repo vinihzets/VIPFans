@@ -1,4 +1,4 @@
-# only_fans
+# vip_fans
 
 A new Flutter project.
 

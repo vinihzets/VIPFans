@@ -1,24 +1,17 @@
-import 'package:only_fans/core/inject/inject.dart';
-import 'package:only_fans/features/register/data/datasources/impl/register_datasources_impl.dart';
-import 'package:only_fans/features/register/data/datasources/register_datasources.dart';
-import 'package:only_fans/features/register/data/repositories/register_repository_impl.dart';
-import 'package:only_fans/features/register/domain/repositories/register_repository.dart';
-import 'package:only_fans/features/register/domain/usecases/sign_up_with_email_and_password_usecase_impl.dart';
-import 'package:only_fans/features/register/presentation/bloc/register_bloc.dart';
+import 'package:morphling/morphling.dart';
+import 'package:vip_fans_instance_core/vip_fans_instance_core.dart';
 
 class RegisterInjector extends ContainerInjectorImpl with DependencyInjector {
   @override
   void dependencies() {
-    injectLazySingleton<RegisterDataSources>(() =>
+    put<RegisterDataSources>(() =>
         RegisterDataSourcesImpl(authService: find(), databaseService: find()));
 
-    injectLazySingleton<RegisterRepository>(
-        () => RegisterRepositoryImpl(dataSources: find()));
+    put<RegisterRepository>(() => RegisterRepositoryImpl(dataSources: find()));
 
-    injectLazySingleton(
-        () => SignUpWithEmailAndPasswordUseCaseImpl(repository: find()));
+    put(() => SignUpWithEmailAndPasswordUseCaseImpl(repository: find()));
 
-    injectFactory(
+    putFactory(
         () => RegisterBloc(signUpWithEmailAndPasswordUseCaseImpl: find()));
   }
 }

@@ -37,6 +37,9 @@ class CustomThemeData {
 
   static ThemeData lightTheme = ThemeData(
       useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: Colors.red,
+      ),
       textTheme: const TextTheme(
           labelSmall: TextStyle(
         color: Colors.black,
